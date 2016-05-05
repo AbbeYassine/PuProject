@@ -8,13 +8,22 @@ public class Task {
     String time;
     String duration;
     String address;
+    Integer image;
 
+    public Integer getImage() {
+        return image;
+    }
 
-    public Task(String name, String time, String duration, String address) {
+    public void setImage(Integer image) {
+        this.image = image;
+    }
+
+    public Task(String name, String time, String duration, int image, String address) {
         this.name = name;
         this.time = time;
         this.duration = duration;
         this.address = address;
+        this.image = image;
     }
 
     public String getName() {

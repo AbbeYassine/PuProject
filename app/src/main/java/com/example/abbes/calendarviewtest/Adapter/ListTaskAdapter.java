@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.abbes.calendarviewtest.R;
@@ -42,6 +43,7 @@ public class ListTaskAdapter extends RecyclerView.Adapter<ListTaskAdapter.ViewHo
         holder.time.setText(task[position].getTime());
         holder.duration.setText(task[position].getDuration());
         holder.adress.setText(task[position].getAddress());
+        holder.image.setImageResource(task[position].getImage());
     }
 
     @Override
@@ -54,6 +56,7 @@ public class ListTaskAdapter extends RecyclerView.Adapter<ListTaskAdapter.ViewHo
         TextView time;
         TextView duration;
         TextView adress;
+        ImageView image ;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -62,6 +65,7 @@ public class ListTaskAdapter extends RecyclerView.Adapter<ListTaskAdapter.ViewHo
             time = (TextView) itemView.findViewById(R.id.time);
             duration = (TextView) itemView.findViewById(R.id.duration);
             adress = (TextView) itemView.findViewById(R.id.adr);
+            image = (ImageView) itemView.findViewById(R.id.logoTask);
         }
     }
 }

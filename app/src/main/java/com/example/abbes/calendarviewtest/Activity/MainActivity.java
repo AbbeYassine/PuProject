@@ -36,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutManager mLayoutManager;
     RecyclerView listTask = null;
     ListTaskAdapter adapter;
+    Integer[] drawbles = {
+            R.drawable.book,
+            R.drawable.sports,
+            R.drawable.two,
+            R.drawable.student
+    };
+    ArrayList<Task[]> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,16 +73,31 @@ public class MainActivity extends AppCompatActivity {
         currentSelected.setTime(calendar.getTime());
 
 
+        for (int i = 0; i < 5; i++) {
+            tasks = new Task[5];
+
+            tasks[i] = new Task("Running at Parc", "4:35", "35min", drawbles[1], "parcours, tunis");
+            tasks[(i + 1) % 5] = new Task("Meeting", "5:35", "35min", drawbles[2], "parcours, tunis");
+            tasks[(i + 2) % 5] = new Task("Sleeping", "6:35", "25min", drawbles[3], "parcours, tunis");
+            tasks[(i + 3) % 5] = new Task("Study", "7:35", "1h", drawbles[0], "parcours, tunis");
+            tasks[(i + 4) % 5] = new Task("Sports", "8:35", "35min", drawbles[1], "parcours, tunis");
+
+            list.add(tasks);
+        }
+        int random = Double.valueOf(Math.random() * (4 - 0)).intValue();
+        setRecycleView(random);
+
+
     }
 
-    private void setRecycleView() {
+    private void setRecycleView(int random) {
 
         listTask.setHasFixedSize(true);
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         listTask.setLayoutManager(mLayoutManager);
-        Log.d("auto", tasks.length + "");
-        adapter = new ListTaskAdapter(this, tasks);
+        Log.d("auto", list.get(random).length + "");
+        adapter = new ListTaskAdapter(this, list.get(random));
         listTask.setAdapter(adapter);
 
     }
@@ -104,14 +126,12 @@ public class MainActivity extends AppCompatActivity {
                 caldroidFragment.refreshView();
 
 
+                int random = Double.valueOf(Math.random() * (4 - 0)).intValue();
+
+
                 //TODO getList Task
-                tasks = new Task[5];
-                tasks[0] = new Task("Running at Parc", "4:35", "35min", "parcours, tunis");
-                tasks[1] = new Task("Running at Parc", "5:35", "35min", "parcours, tunis");
-                tasks[2] = new Task("Running at Parc", "6:35", "25min", "parcours, tunis");
-                tasks[3] = new Task("Running at Parc", "7:35", "1h", "parcours, tunis");
-                tasks[4] = new Task("Running at Parc", "8:35", "35min", "parcours, tunis");
-                setRecycleView();
+
+                setRecycleView(random);
 
 
             }

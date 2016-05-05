@@ -75,7 +75,7 @@
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.5"
+                        android:layout_weight="0.3"
                         android:src="@drawable/location"/>
                     
                     <TextView
@@ -95,9 +95,15 @@
 
 
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/greyItem"
+            ></View>
 
 
     </LinearLayout>
+
 
 
 
